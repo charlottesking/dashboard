@@ -60,11 +60,14 @@ body.theme-dark {
     --color-bg: #141a26;
     --color-surface: #1f2937;
     --color-surface-alt: #273142;
+    --color-header-bg: #1a2234;
     --color-text: #f7fafc;
     --color-muted: #a9b4c4;
     --color-border: #2c3648;
     --color-accent: #c9a9f0;
     --color-accent-strong: #e2d1f7;
+    --color-accent-boarder: #3b4252;
+    --color-accent-light: #2c3648;
     --color-danger: #f97066;
     --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
 }
@@ -142,6 +145,14 @@ main {
     padding: 0 1.5rem;
 }
 
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .add-section {
     background-color: var(--color-surface);
     padding: var(--space-lg);
@@ -192,6 +203,39 @@ main {
 /* =========================================================
    5. HEADER & FOOTER
    ========================================================= */
+header {
+    background-color: var(--color-header-bg);
+    border-bottom: 1px solid var(--color-accent-border);
+    padding: var(--space-lg) var(--space-xl);
+    margin-bottom: var(--space-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+header h1 {
+    font-size: var(--text-h2);
+    color: var(--color-text);
+    margin: 0;
+}
+
+#theme-toggle {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-accent-border);
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--color-accent-light);
+    border-color: var(--color-accent);
+}
 
 /* =========================================================
    6. FORMS & CONTROLS
@@ -201,7 +245,11 @@ main {
 /* =========================================================
    7. RESPONSIVE
    ========================================================= */
-
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* =========================================================
    8. BUTTONS
@@ -212,6 +260,11 @@ button {
     border: none;
     border-radius: var(--radius-md);
     cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .spinner {
