@@ -1,4 +1,7 @@
 function loadWeather() {
+    const el = document.getElementById('weather-display');
+    el.innerHTML = `<div class="loading-state"><div class="spinner"></div><p>Loading weather...</p></div>`;
+
     fetch('./data/weather.json')
         .then(response => response.json())
         .then(data => displayWeather(data))
@@ -17,10 +20,12 @@ function displayWeather(weather) {
             <div class="weather-condition">${weather.condition}</div>
         </div>`;
 }
+
 function displayWeatherError() {
     document.getElementById('weather-display').innerHTML =
         `<p class="widget-error">Weather data is unavailable right now.</p>`;
 }
+
 loadWeather();
 
 function initializeTheme() {
@@ -28,6 +33,7 @@ function initializeTheme() {
         document.body.classList.add('theme-dark');
     }
 }
+
 function toggleTheme() {
     const isDark = document.body.classList.toggle('theme-dark');
     if (isDark) {
@@ -36,5 +42,6 @@ function toggleTheme() {
         localStorage.setItem('dashboardTheme', 'light');
     }
 }
+
 document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 initializeTheme();

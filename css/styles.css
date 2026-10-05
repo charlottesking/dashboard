@@ -63,7 +63,7 @@ body.theme-dark {
     --color-text: #f7fafc;
     --color-muted: #a9b4c4;
     --color-border: #2c3648;
-    --color--accent: #c9a9f0;
+    --color-accent: #c9a9f0;
     --color-accent-strong: #e2d1f7;
     --color-danger: #f97066;
     --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
@@ -114,6 +114,25 @@ a:hover {
     text-decoration: underline;
 }
 
+.skip-link {
+    position:absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-accent);
+    color: var(--color-surface);
+    padding: 8px 16px;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 /* =========================================================
    4. LAYOUT & CARDS
    ========================================================= */
@@ -154,8 +173,21 @@ main {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: fade-in 0.4s ease-out;
 }
 
+.widget:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .dashboard { grid-template-columns: repeat(2, 1fr); }
+}
 
 /* =========================================================
    5. HEADER & FOOTER
@@ -180,4 +212,23 @@ button {
     border: none;
     border-radius: var(--radius-md);
     cursor: pointer;
+}
+
+.spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 3px solid var(--color-accent-border);
+    border-top-color: var(--color-accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinner { animation: none; }
+    .widget { transition: none; animation: none; }
+    .widget:hover { transform: none; }
 }
