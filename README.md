@@ -4,7 +4,7 @@ A responsive personal dashboard built with vanilla HTML, CSS, and JavaScript. It
 
 ## Links
 * **Live Site:** [Your Live URL Here]
-* **GitHub Repo:** [Your GitHub Repo Link Here]
+* **GitHub Repo:**(https://github.com/charlottesking/dashboard.git)
 
 ## Features
 * **Weather Widget:** Uses `fetch()` to load local weather from a JSON file, shows a loading spinner, and displays an error message if the file fails to load.
