@@ -3,7 +3,7 @@
 A responsive personal dashboard built with vanilla HTML, CSS, and JavaScript. It pulls in data from JSON files, lets you manage tasks, and saves your settings.
 
 ## Links
-* **Live Site:** [Your Live URL Here]
+* **Live Site:**(https://charlottesking.github.io/dashboard/)
 * **GitHub Repo:**(https://github.com/charlottesking/dashboard.git)
 
 ## Features
